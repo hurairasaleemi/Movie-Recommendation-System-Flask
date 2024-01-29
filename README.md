@@ -1,4 +1,3 @@
-# Abu-Hurairah
 Movie Recommendation System
 
 Project Domain / Category
