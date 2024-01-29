@@ -39,7 +39,7 @@ First we need to download the dateset of movies in order to build and train our 
 Use 100k rating files for this model
 
 Tools:
-Python
-Jupyter Notebook
-Anaconda
+Python,
+Jupyter Notebook,
+Anaconda,
 
