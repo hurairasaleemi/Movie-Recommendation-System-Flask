@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Recommender System</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+      }
+      h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      form {
+        display: flex;
+        margin-bottom: 40px;
+      }
+      input[type="text"] {
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+        flex-grow: 1;
+      }
+      input[type="submit"] {
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0062cc;
+      }
+      .error-message {
+        color: #dc3545;
+        margin-bottom: 20px;
+      }
+      .recommendations {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+      }
+      .recommendation {
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: box-shadow 0.3s ease-in-out;
+      }
+      .recommendation:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+      .recommendation img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      .recommendation h2 {
+        font-size: 24px;
+        margin: 10px 0;
+      }
+      .recommendation p {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Movie Recommender System</h1>
+      <form action="/" method="post">
+        <input type="text" name="movie_name" placeholder="Enter a movie name">
+        <input type="submit" value="Recommend">
+      </form>
+      {% if error_message %}
+      <div class="error-message">{{ error_message }}</div>
+      {% endif %}
+      {% if recommendations %}
+      <div class="recommendations">
+        {% for title, genres, rating, distance in recommendations %}
+        <div class="recommendation">
+          <img src="{{ url_for('static', filename='images/' + title.replace(':', '').replace(' ', '_') + '.jpg') }}" alt="{{ title }}">
+          <h2>{{ title }}</h2>
+          <p>Average rating: {{ rating }}</p>
+          <p>Distance: {{ distance }}</p>
+          <p>Genres: {{ genres }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

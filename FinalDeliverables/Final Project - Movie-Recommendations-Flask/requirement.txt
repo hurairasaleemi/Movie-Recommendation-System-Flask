@@ -1,0 +1,24 @@
+CMD:
+
+cd *path*
+
+py -m venv env
+
+env\Scripts\activate
+
+pip install flask 
+
+pip install pandas
+
+pip install -U scikit-learn
+
+pip install scipy
+
+pip install fuzzywuzzy
+
+pip install levenshtein
+
+set FLASK_APP=app.py
+
+flask run 
+
